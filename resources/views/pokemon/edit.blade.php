@@ -19,7 +19,11 @@
         </div>
         <div class="form-group">
             <label for="tipo">Tipo del Pokémon</label>
-            <input value="{{old('tipo', $pokemon->tipo)}}" required type="text" class="form-control" id="tipo" name="tipo" placeholder="Fuego, Agua o Planta">
+            <select required class="form-control" id="tipo" name="tipo">
+                <option value="agua" {{ old('tipo', $pokemon->tipo) == 'agua' ? 'selected' : '' }}>Agua</option>
+                <option value="fuego" {{ old('tipo', $pokemon->tipo) == 'fuego' ? 'selected' : '' }}>Fuego</option>
+                <option value="planta" {{ old('tipo', $pokemon->tipo) == 'planta' ? 'selected' : '' }}>Planta</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="nivel">Nivel del Pokémon</label>

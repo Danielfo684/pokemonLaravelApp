@@ -16,8 +16,8 @@ class CreatepokemonTable extends Migration
         Schema::create('pokemon', function (Blueprint $table) {
             $table->id(); // Auto-increment y clave primaria
             $table->string('nombre', 50)->unique();
-            $table->decimal('peso', 6, 3);
-            $table->decimal('altura', 5, 3);
+            $table->float('peso');
+            $table->float('altura');
             $table->string('tipo', 50);
             $table->integer('nivel'); // Sin longitud, solo tipo
             $table->integer('evolucion'); // Sin longitud, solo tipo

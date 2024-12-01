@@ -30,19 +30,19 @@ class PokemonController extends Controller
    public function store(Request $request)
     {
         $validated = $request->validate([
-            'nombre'  => 'required|unique:pokemon|max:50|min:4',
-            'peso'    => 'required|numeric|gte:0|lte:999.999',
-            'altura'  => 'required|numeric|gte:0|lte:10.999',
+            'nombre'  => 'required|unique:pokemon|max:50|min:3',
+            'peso'    => 'required|numeric|gte:0|lte:900',
+            'altura'  => 'required|numeric|gte:0|lte:100',
             'tipo'    => 'required|in:Agua,Fuego,Planta,AGUA,FUEGO,PLANTA,agua,fuego,planta',
             'nivel'  => 'required|numeric|gte:1|lte:100',
-            'evolucion' => 'required |numeric|gte:1|lte:5',
+            'evolucion' => 'required |numeric|gte:1|lte:3',
         ]);
         $pokemon = new Pokemon($request->all());
         try {
             $pokemon = Pokemon::create($request->all());
-            return redirect('pokemon')->with(['message' => 'El Pokémon ha sido creado.']);
+            return redirect('pokemon')->with(['message' => 'Pokemon creado correctamente.']);
         } catch(\Exception $e) {
-            return back()->withInput()->withErrors(['message' => 'El Pokémon no ha sido creado.']);
+            return back()->withInput()->withErrors(['message' => 'Error al crear el Pokémon.']);
         }
     }
 
@@ -71,18 +71,18 @@ class PokemonController extends Controller
      */
     public function update(Request $request, Pokemon $pokemon){
         $validated = $request->validate([
-            'nombre'  => 'required|max:50|min:4',
-            'peso'    => 'required|numeric|gte:0|lte:999.999',
-            'altura'  => 'required|numeric|gte:0|lte:10.999',
+            'nombre'  => 'required|max:50|min:3',
+            'peso'    => 'required|numeric|gte:0|lte:900',
+            'altura'  => 'required|numeric|gte:0|lte:100',
             'tipo'    => 'required|in:Agua,Fuego,Planta,AGUA,FUEGO,PLANTA,agua,fuego,planta',
             'nivel'  => 'required|numeric|gte:1|lte:100',
-            'evolucion' => 'required|numeric|gte:1|lte:5',
+            'evolucion' => 'required|numeric|gte:1|lte:3',
         ]);
         try {
             $result = $pokemon->update($request->all());
-            return redirect('pokemon')->with(['message' => 'El Pokémon ha sido actualizado.']);
+            return redirect('pokemon')->with(['message' => 'Pokémon actualizado correctamente.']);
         } catch(\Exception $e) {
-            return back()->withInput()->withErrors(['message' => 'El Pokémon no ha sido actualizado.']);  
+            return back()->withInput()->withErrors(['message' => 'Error al actualizar el Pokémon.']);  
         }
     }
 
@@ -92,9 +92,9 @@ class PokemonController extends Controller
         public function destroy(Request $request, Pokemon $pokemon){
         try {
         $pokemon->delete();
-        return redirect('pokemon')->with(['message' => 'El Pokémon ha sido eliminado']);
+        return redirect('pokemon')->with(['message' => 'Pokémon eliminado correctamente.']);
         } catch (\Exception $e) {
-        return back()->withErrors(['message' => 'El Pokémon no ha sido eliminado']);
+        return back()->withErrors(['message' => 'Error al eliminar el Pokémon.']);
         }
     }
 
