@@ -23,8 +23,8 @@
                 <tr>
                     <td>{{$pokemon->id}}</td>
                     <td>{{$pokemon->nombre}}</td>
-                    <td>{{$pokemon->peso}} kg</td>
-                    <td>{{$pokemon->altura}} m</td>
+                    <td>{{$pokemon->peso}} Kilos</td>
+                    <td>{{$pokemon->altura}} metros</td>
                     <td>{{$pokemon->tipo}}</td>
                     <td>{{$pokemon->nivel}}</td>
                     <td>{{$pokemon->evolucion}}</td>
